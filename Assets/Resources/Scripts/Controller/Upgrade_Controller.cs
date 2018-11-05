@@ -15,7 +15,7 @@ public class Upgrade_Controller : MonoBehaviour {
 
 	public void LoadStats(){
 		points = 0;
-		speed = 10;
+		speed = 1;
 		health = 0;
 		fireRate = 1;
 		fireSpeed = 1f;
@@ -32,9 +32,9 @@ public class Upgrade_Controller : MonoBehaviour {
 	}
 
 	public void RestorHealth(){
-		if (points > 1) {
-			points -= 2;
-			playerData.health = health + 10;
+		if (points > 0) {
+			points -= 1;
+			playerData.health += 2;
 			UpdateHealthtxt ();
 			UpdateText ();
 		}
@@ -54,14 +54,9 @@ public class Upgrade_Controller : MonoBehaviour {
 		if (health < 10) {
 			if (points > 0) {
 				points--;
-				if (playerData.health == health + 10) {
-					health += 1;
-					playerData.health = health + 10;
-					UpdateHealthtxt ();
-				} else {
-					health += 1;
-				}
-
+		    	health += 1;
+				playerData.health = health + 10;
+				UpdateHealthtxt ();
 				UpdateText ();
 			}
 		}
